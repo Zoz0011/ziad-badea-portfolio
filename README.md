@@ -1,5 +1,7 @@
 # Ziad Badea — Portfolio
 
+[Open the live portfolio](https://zoz0011.github.io/ziad-badea-portfolio/)
+
 A responsive English/Arabic portfolio presenting four web and mobile projects. The site uses a dark background with cyan and pink accents, a centered introduction, a single-column project list, and individual project pages.
 
 Built with plain HTML, CSS, and JavaScript. No package installation or framework build is required for the portfolio.
