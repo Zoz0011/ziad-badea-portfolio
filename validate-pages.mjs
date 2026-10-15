@@ -11,6 +11,9 @@ assert(fs.existsSync(path.join(docs,'.nojekyll')),'Pages distribution requires .
 assert(!fs.existsSync(path.join(docs,'Source')),'Private/source relay copy must not be published');
 const scripts=[...bundle.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(match=>match[1]).filter(Boolean);
 assert(scripts.length>0,'Standalone Pages app script is missing');
+const embeddedLinks=JSON.parse(bundle.match(/const offlineLinks=(\{[^\r\n]+\});/)[1]);
+for(const [id,destinations] of Object.entries(embeddedLinks))assert.deepEqual(Object.keys(destinations),['live'],`Private project source must not be embedded in Pages: ${id}`);
+assert(!bundle.includes('urls.source'),'Source CTA must not remain in the public Pages bundle');
 for(const script of scripts)new vm.Script(script);
 
 function fileExistsAtProjectBase(value,pageUrl){
@@ -30,10 +33,14 @@ for(const hash of ['#home',...projectIds.map(id=>'#project/'+id)]){
   const context=vm.createContext({localStorage:{getItem(){return'en';},setItem(){}},location:{hash,pathname:'/ziad-badea-portfolio/'},document:{documentElement:{},title:'',getElementById(id){return id==='app'?app:node();},querySelector(selector){if(!elements.has(selector))elements.set(selector,node());return elements.get(selector);},querySelectorAll(){return[];}},window:{addEventListener(){},scrollTo(){},open(){}},URL,console});
   for(const script of scripts)vm.runInContext(script,context);
   assert(app.innerHTML.includes('<main'),'Rendered Pages route missing: '+hash);
+  assert(!/View source|شوف الكود|github\.com/i.test(app.innerHTML),'Private project source link reached Pages route: '+hash);
   validateHtml(app.innerHTML,projectBase);
   if(hash==='#home')for(const id of projectIds)assert(app.innerHTML.includes(`href="#project/${id}"`),'Project hash link missing: '+id);
   else{const id=hash.split('/')[1];assert(app.innerHTML.includes(`href="demos/${id}/"`),'Relative demo link missing: '+id);}
-  if(hash==='#home'){elements.get('.language-toggle').listeners.click();assert.equal(context.document.documentElement.dir,'rtl');validateHtml(app.innerHTML,projectBase);}
+  elements.get('.language-toggle').listeners.click();
+  assert.equal(context.document.documentElement.dir,'rtl');
+  validateHtml(app.innerHTML,projectBase);
+  assert(!/View source|شوف الكود|github\.com/i.test(app.innerHTML),'Private project source link reached Arabic Pages route: '+hash);
 }
 function inspect(directory){
   for(const entry of fs.readdirSync(directory,{withFileTypes:true})){
@@ -49,4 +56,4 @@ function inspect(directory){
 }
 inspect(docs);
 for(const id of projectIds)assert(fs.existsSync(path.join(docs,'demos',id,'index.html')),'Demo missing: '+id);
-console.log('PASS: Pages project-base hash routes, Arabic toggle, relative demo/assets links, JS syntax, and upload exclusions.');
+console.log('PASS: Pages project-base hash routes, public live-only destinations in both languages, Arabic toggle, relative demo/assets links, JS syntax, and upload exclusions.');

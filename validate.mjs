@@ -5,6 +5,11 @@ import assert from 'node:assert/strict';
 const root=path.resolve('dist');
 const appCode=fs.readFileSync(path.join(root,'app.js'),'utf8');
 const projectLinks=JSON.parse(fs.readFileSync(path.join(root,'project-links.json'),'utf8'));
+for(const [id,destinations] of Object.entries(projectLinks)){
+  assert.ok(!Object.hasOwn(destinations,'source'),`Private project source must not be in the public manifest: ${id}`);
+  assert.deepEqual(Object.keys(destinations),['live'],`Only live destinations may be advertised: ${id}`);
+}
+assert.ok(!appCode.includes('urls.source'),'Source CTA must not remain in the public app');
 const routes=['/','/projects/pharmacore/','/projects/safi/','/projects/prescripto/','/projects/diacare/','/demos/pharmacore/','/demos/safi/','/demos/prescripto/','/demos/diacare/'];
 for(const route of routes) assert.ok(fs.existsSync(path.join(root,route,'index.html')),`Missing route ${route}`);
 for(const route of routes){
@@ -42,9 +47,12 @@ home.languageButton.listeners.click();
 assert.equal(home.context.document.documentElement.dir,'rtl');
 assert.ok(home.output.innerHTML.includes('أبرز'));
 for(const id of Object.keys(projectLinks)){
-  const page=await load(`/projects/${id}/`);
-  assert.ok(page.output.innerHTML.includes(`/demos/${id}/`),`Project demo link: ${id}`);
-  if(projectLinks[id].live) assert.ok(page.output.innerHTML.includes(projectLinks[id].live),`Actual live destination: ${id}`);
-  assert.ok(!page.output.innerHTML.includes('undefined'),`Missing project content: ${id}`);
+  for(const language of ['en','ar']){
+    const page=await load(`/projects/${id}/`,language);
+    assert.ok(page.output.innerHTML.includes(`/demos/${id}/`),`Project demo link: ${id}`);
+    if(projectLinks[id].live)assert.ok(page.output.innerHTML.includes(projectLinks[id].live),`Actual live destination: ${id}`);
+    assert.ok(!page.output.innerHTML.includes('undefined'),`Missing project content: ${id}`);
+    assert.ok(!/View source|شوف الكود|github\.com/i.test(page.output.innerHTML),`Private source link exposed for ${id} (${language})`);
+  }
 }
-console.log('PASS: 9 routes, assets, project destinations, Arabic toggle, filters, phone/WhatsApp links and encoded contact draft.');
+console.log('PASS: 9 routes, assets, live-only project destinations in both languages, Arabic toggle, filters, phone/WhatsApp links and encoded contact draft.');

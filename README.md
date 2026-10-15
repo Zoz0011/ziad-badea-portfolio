@@ -15,7 +15,7 @@ Built with plain HTML, CSS, and JavaScript. No package installation or framework
 - Responsive navigation, skills, about, and contact sections.
 - Direct contact links and a form that opens a WhatsApp draft for the visitor to review and send.
 
-The portfolio has no hosted URL configured in this repository yet.
+The portfolio is published on [GitHub Pages](https://zoz0011.github.io/ziad-badea-portfolio/). The project applications are maintained in private repositories; this public showcase provides descriptions, images, live links, and separate browser demos.
 
 ## Run locally
 
@@ -47,7 +47,7 @@ npm run check
 | --- | --- | --- | --- |
 | PharmaCore | React/Node.js pharmacy application with Prisma and SQLite. | [Open PharmaCore](https://pharmacy-system-ac68e.web.app/) | Arabic POS, medicine search, stock/unit conversion, checkout, and local sale history. |
 | Safi Debt Ledger | Arabic JavaScript web application and Capacitor Android app with Supabase. | [Open Safi](https://safi-ledger-eg.pauper-93phylumbunni.chatgpt.site/) | Sample accounts, debt/payment entry, balances, search, and statement CSV export. |
-| Prescripto | React/Node.js appointment platform with MongoDB. | [Open Prescripto](https://prescripto-frontend-50eh.onrender.com/) | Specialty browsing, source doctor assets, illustrative slots, local booking, and cancellation. |
+| Prescripto | React/Node.js appointment platform with MongoDB. | [Open Prescripto](https://prescripto-frontend-50eh.onrender.com/) | Specialty browsing, doctor images, illustrative slots, local booking, and cancellation. |
 | DiaCare Mom | Arabic Flutter/Dart prototype with encrypted on-device storage. | No web deployment is included. | HTML preview for local health logs, written insulin references, reported events, and care-plan text. |
 
 Project detail routes are `/projects/pharmacore/`, `/projects/safi/`, `/projects/prescripto/`, and `/projects/diacare/`. Browser demos are available under the matching `/demos/<project>/` routes.
@@ -63,7 +63,7 @@ dist/
   index.html             Main portfolio shell
   app.js                 Portfolio content and interactions
   styles.css             Bilingual responsive theme
-  project-links.json     Existing live/source destinations
+  project-links.json     Available live-project destinations
   assets/                Portfolio graphics and project logos
   projects/              Four project detail-page shells
   demos/                 Four isolated browser demos
@@ -80,7 +80,7 @@ For static hosting, publish `dist/` at the domain root so absolute asset and rou
 
 `docs/` contains the standalone distribution prepared for a GitHub Pages project site. Its project details use hash routes such as `#project/safi`, and browser-demo links remain relative to the repository's project base. `.nojekyll` preserves the static files.
 
-To publish this prepared distribution, choose **Deploy from a branch**, select the branch containing this repository, and select **`/docs`** in the repository's Pages settings. Publication and its public URL must be verified separately.
+GitHub Pages serves the `main` branch's **`/docs`** directory at the live portfolio URL above. Keep this public showcase separate from the private application repositories.
 
 `dist/` is the editable multi-page source version; `docs/` is a separately prepared release distribution. Changes to `dist/` do not refresh the standalone `docs/index.html` automatically. Refresh that distribution before publishing updated content. The validation workflow checks both versions and performs no deployment.
 
