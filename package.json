@@ -1,0 +1,15 @@
+{
+  "name": "ziad-badea-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ziad Badea's bilingual portfolio with project details and isolated browser demos.",
+  "scripts": {
+    "preview": "node preview.mjs",
+    "generate": "node generate-pages.mjs",
+    "check": "node validate.mjs && node validate-pages.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

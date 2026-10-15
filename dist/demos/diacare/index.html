@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a6d67">
+  <meta name="description" content="تجربة متصفح تفاعلية لواجهات Mom Care: سجلات سكر وأنسولين وخطة طبيب محلية باستخدام بيانات تجريبية.">
+  <title>Mom Care · تجربة المشروع</title>
+  <link rel="icon" href="./mom-care-logo.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="demo-notice"><strong>تجربة ويب</strong><span>استخدمي بيانات تجريبية فقط. السجلات محلية في هذا المتصفح؛ إشعارات الهاتف وقراءة الروشتة غير متاحتين.</span><a href="../../">البورتفوليو ↗</a></div>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="brand" href="#home"><img src="./mom-care-logo.png" alt="شعار Mom Care"><span><b dir="ltr">Mom Care</b><small>مساحة يومية هادئة</small></span></a>
+      <div class="header-actions"><button id="theme-toggle" class="icon-button" aria-label="تفعيل الوضع الليلي" title="الوضع الليلي">☾</button><button id="text-toggle" class="icon-button" aria-label="تكبير الخط" title="تكبير الخط">أ+</button></div>
+    </header>
+    <main id="content" tabindex="-1"></main>
+    <footer class="app-footer">معاينة متصفح مستوحاة من مصدر Flutter الأصلي · سجل تجريبي، بدون حسابات أو مزامنة أو توصيات علاجية</footer>
+  </div>
+  <nav class="bottom-nav" aria-label="القائمة الرئيسية"><button data-view="home"><span>⌂</span>الرئيسية</button><button data-view="schedule"><span>▤</span>جدولي</button><button data-view="more"><span>•••</span>المزيد</button></nav>
+  <dialog id="form-dialog"><form id="entry-form"><div class="dialog-heading"><h2 id="dialog-title"></h2><button type="button" id="close-dialog" class="icon-button" aria-label="إغلاق">×</button></div><div id="dialog-fields"></div><p id="form-error" role="alert"></p><div class="dialog-actions"><button type="submit" class="button primary" id="save-button">حفظ السجل</button><button type="button" id="cancel-dialog" class="button secondary">إلغاء</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>

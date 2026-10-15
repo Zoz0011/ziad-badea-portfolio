@@ -1,0 +1,18 @@
+{
+  "pharmacore": {
+    "live": "https://pharmacy-system-ac68e.web.app/",
+    "source": "https://github.com/Zoz0011/pharmacy-system1"
+  },
+  "safi": {
+    "live": "https://safi-ledger-eg.pauper-93phylumbunni.chatgpt.site",
+    "source": "https://github.com/Zoz0011/debt-ledger-unified"
+  },
+  "prescripto": {
+    "live": "https://prescripto-frontend-50eh.onrender.com/",
+    "source": "https://github.com/Zoz0011/prescripto"
+  },
+  "diacare": {
+    "live": null,
+    "source": "https://github.com/Zoz0011/diacare-mom"
+  }
+}
