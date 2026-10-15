@@ -86,6 +86,6 @@ GitHub Pages serves the `main` branch's **`/docs`** directory at the live portfo
 
 ## Author
 
-**Ziad Badea** — Senior Computer Science Engineering student.
+**Ziad Badea** — Full-Stack Web & Flutter Developer with practical project experience in pharmacy, finance, appointments, and personal health logging.
 
 [LinkedIn](https://www.linkedin.com/in/ziad-badea-6272a7301/)
