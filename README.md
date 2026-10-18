@@ -45,7 +45,7 @@ npm run check
 
 | Project | Original implementation | Existing hosted project | Portfolio browser demo |
 | --- | --- | --- | --- |
-| PharmaCore | React/Node.js pharmacy application with Prisma and SQLite. | [Open PharmaCore](https://glowing-dasik-44bd30.netlify.app/) | Arabic POS, medicine search, stock/unit conversion, checkout, and local sale history. |
+| PharmaCore | React/Node.js pharmacy application with Prisma and SQLite. | [Open PharmaCore](https://pharmacore-eg.pages.dev/) | Arabic POS, medicine search, stock/unit conversion, checkout, and local sale history. |
 | Safi Debt Ledger | Arabic JavaScript web application and Capacitor Android app with Supabase. | [Open Safi](https://safi-ledger-eg.pauper-93phylumbunni.chatgpt.site/) | Sample accounts, debt/payment entry, balances, search, and statement CSV export. |
 | Prescripto | React/Node.js appointment platform with MongoDB. | [Open Prescripto](https://prescripto-frontend-50eh.onrender.com/) | Specialty browsing, doctor images, illustrative slots, local booking, and cancellation. |
 | DiaCare Mom | Arabic Flutter/Dart prototype with encrypted on-device storage. | No web deployment is included. | HTML preview for local health logs, written insulin references, reported events, and care-plan text. |
